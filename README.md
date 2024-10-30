@@ -1,5 +1,6 @@
 # StudyTime
 Project Description
+
 StudyTime is an innovative online learning platform that offers a diverse range of courses tailored to various interests and skill levels. Users can explore courses differentiated by duration, ratings, and other criteria, ensuring a customized learning experience. The platform features a user-friendly interface, allowing users to register and log into their accounts effortlessly.
 
 The homepage is designed to captivate users with essential information, including testimonials from fellow students, a query form for inquiries, and a footer containing vital contact information. The website boasts a cohesive aesthetic, characterized by a soothing blue-green-white color palette, and is built using HTML, CSS, and JavaScript, with the addition of the Bootstrap framework for enhanced responsiveness.
