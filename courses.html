@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="style_courses.css">
+    <script src="courses_file.js" defer></script> 
+</head>
+<body>
+    <div class="navbar">
+        <button onclick="goHome()">Home</button>
+        <div class="navbar-right">
+            <div class="dropdown">
+                <button id="filter-button" onclick="toggleFilterOptions()">Filter</button>
+                <ul id="filter-options" class="dropdown-content" style="display: none;">
+                    <li>
+                        <label>
+                            <input type="radio" name="sort" value="rating-asc" onchange="sortCourses()"> Rating (Low to High)
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="sort" value="rating-desc" onchange="sortCourses()"> Rating (High to Low)
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="sort" value="duration-asc" onchange="sortCourses()"> Duration (Low to High)
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="sort" value="duration-desc" onchange="sortCourses()"> Duration (High to Low)
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="sort" value="title" onchange="sortCourses()"> Title
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <button id="theme-toggle" onclick="toggleTheme()">Night Mode</button>
+        </div>
+    </div>
+
+    <h1>Our Courses</h1>
+
+    <div class="course-container">
+        <div class="course-card">
+            <div>
+                <h2 class="course-title">Programming Course</h2>
+                <p class="course-description">Learn the basics of programming with Python and create your first projects.</p>
+                <p class="course-duration">Duration: 3 months</p>
+                <div class="rating" id="rating1">
+                    <span class="star" onclick="setRating(1, 'rating1')">★</span>
+                    <span class="star" onclick="setRating(2, 'rating1')">★</span>
+                    <span class="star" onclick="setRating(3, 'rating1')">★</span>
+                    <span class="star" onclick="setRating(4, 'rating1')">★</span>
+                    <span class="star" onclick="setRating(5, 'rating1')">★</span>
+                </div>
+                <p id="rating1-message">Your rating: None</p>
+            </div>
+            <img src="programming.jpg" alt="Programming Course Image" class="course-image">
+        </div>
+
+        <div class="course-card">
+            <div>
+                <h2 style="color: #167544" class="course-title">Web Development Course</h2>
+                <p class="course-description">Master HTML, CSS, and JavaScript to build modern websites.</p>
+                <p class="course-duration">Duration: 4 months</p>
+                <div class="rating" id="rating2">
+                    <span class="star" onclick="setRating(1, 'rating2')">★</span>
+                    <span class="star" onclick="setRating(2, 'rating2')">★</span>
+                    <span class="star" onclick="setRating(3, 'rating2')">★</span>
+                    <span class="star" onclick="setRating(4, 'rating2')">★</span>
+                    <span class="star" onclick="setRating(5, 'rating2')">★</span>
+                </div>
+                <p id="rating2-message">Your rating: None</p>
+            </div>
+            <img src="webdev.jpg" alt="Web Development Course Image" class="course-image">
+        </div>
+
+        <div class="course-card">
+            <div>
+                <h2 style="color: #352f73" class="course-title">Design Course</h2>
+                <p class="course-description">Learn the basics of graphic design and create creative projects.</p>
+                <p class="course-duration">Duration: 2 months</p>
+                <div class="rating" id="rating3">
+                    <span class="star" onclick="setRating(1, 'rating3')">★</span>
+                    <span class="star" onclick="setRating(2, 'rating3')">★</span>
+                    <span class="star" onclick="setRating(3, 'rating3')">★</span>
+                    <span class="star" onclick="setRating(4, 'rating3')">★</span>
+                    <span class="star" onclick="setRating(5, 'rating3')">★</span>
+                </div>
+                <p id="rating3-message">Your rating: None</p>
+            </div>
+            <img src="design.jpg" alt="Design Course Image" class="course-image">
+        </div>
+    </div>
+    
+    <footer class="text-white text-center py-3 fixed-bottom">
+        <p>Created by Akhmetova Dilyara SE-2325</p>
+        <p>Date: 10.09.2024</p>
+    </footer>
+</body>
+</html>
