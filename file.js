@@ -3,6 +3,8 @@ const popup = document.getElementById('contact-popup');
 const openPopupButton = document.getElementById('open-popup');
 const closeButton = document.querySelector('.close-btn');
 const form_popup = document.getElementById('contact-form'); 
+const errorSound = new Audio('error.mp3'); 
+const notificationSound = new Audio('sound.wav'); 
 
 openPopupButton.addEventListener('click', () => {
     popup.style.display = 'flex';
@@ -29,27 +31,32 @@ form_popup.addEventListener('submit', (event) => {
 
         if (!email || !phone || !message) {
             alert("All fields are required.");
+            errorSound.play() 
             return false;
         }
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(email)) {
             alert("Invalid email format.");
+            errorSound.play() 
             return false;
         }
 
         const phoneRegex = /^\+7\s?\d{3}\s?\d{7}$/;
         if (!phoneRegex.test(phone)) {
             alert("Invalid phone number format.");
+            errorSound.play() 
             return false;
         }
 
         if (message.length > 500) {
             alert("Message cannot exceed 500 characters.");
+            errorSound.play() 
             return false;
         }
 
         alert("Form submitted successfully!");
+        notificationSound.play();
         form_popup.reset();
         popup.style.display = 'none';
     } catch (error) {
@@ -160,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', () => {
             if (!isStepValid(currentStep)) {
                 alert('Please fill all required fields before proceeding.');
+                errorSound.play() 
                 return;
             }
 
@@ -167,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const email = document.getElementById('email').value;
                 if (!isEmailValid(email)) {
                     alert('Please enter a valid email address.');
+                    errorSound.play();
                     return;
                 }
             }
@@ -191,12 +200,14 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); 
         if (!isStepValid(currentStep)) {
             alert('Please fill all required fields before submitting.');
+            errorSound.play() 
             return;
         }
 
         const email = document.getElementById('email').value;
         if (!isEmailValid(email)) {
             alert('Please enter a valid email address.');
+            errorSound.play() 
             return;
         }
 

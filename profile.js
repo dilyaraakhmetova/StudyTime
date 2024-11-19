@@ -60,5 +60,5 @@ function logout() {
 }
 
 function goHome() {
-    window.location.href = 'StudyTime.html'; 
+    window.location.href = 'index.html'; 
 }

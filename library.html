@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поиск книг</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .book {
-            border: 1px solid #ddd;
-            margin: 10px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .book img {
-            height: 100px;
-            margin-right: 20px;
-        }
-    </style>
+    <title>Library</title>
+    <link rel="stylesheet" href="style_library.css">
+    <script src="library_file.js" defer></script> 
 </head>
 <body>
-    <h1>Поиск книг</h1>
-    <form id="bookSearchForm">
-        <input type="text" id="query" placeholder="Введите название книги" required>
-        <button type="submit">Искать</button>
-    </form>
-    <div id="results"></div>
+    <header>
+        <h1>Library</h1>
+        <button id="home-button" onclick="goHome()">Home</button>
+    </header>
+    <main>
+        <div class="instructions">
+            <h1>Search book:</h1>
+        </div>
+        <form id="bookSearchForm">
+            <input type="text" id="query" placeholder="Enter the book title" required>
+            <button type="submit">Search</button>
+        </form>
+        <div id="results"></div>
+    </main>
 
-    <script src="script.js"></script>
+    <footer class="text-white text-center py-3 fixed-bottom">
+        <p>Created by Akhmetova Dilyara SE-2325</p>
+        <p>Date: 10.09.2024</p>
+    </footer>
 </body>
 </html>
