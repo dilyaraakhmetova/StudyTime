@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск книг</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .book {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .book img {
+            height: 100px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Поиск книг</h1>
+    <form id="bookSearchForm">
+        <input type="text" id="query" placeholder="Введите название книги" required>
+        <button type="submit">Искать</button>
+    </form>
+    <div id="results"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

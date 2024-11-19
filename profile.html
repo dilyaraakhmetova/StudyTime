@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <span class="navbar-left" style="font-size: 30px; font-family: 'Tahoma', sans-serif;">My Profile</span>
+        <div class="navbar-right">
+            <button id="home-button" onclick="goHome()">Home</button>
+            <button class="logout-btn" onclick="logout()">Log out</button>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="avatar.png" alt="User Avatar" class="profile-avatar">
+            <div>
+                <h1 id="userName">User Name</h1>
+                <p id="userEmail" >user@example.com</p>
+                <p>Joined: <span id="userJoinDate">2024-11-19</span></p>
+            </div>
+        </div>
+
+        <div class="courses-container">
+            <h2>Your Courses</h2>
+            <div class="course-card">
+                <img src="webdev.jpg" alt="Course 1" class="course-image">
+                <div class="course-info">
+                    <h3 class="course-title">Web Development Course</h3>
+                    <p class="course-description">Master HTML, CSS, and JavaScript to build modern websites.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-white text-center py-3 fixed-bottom">
+        <p>Created by Akhmetova Dilyara SE-2325</p>
+        <p>Date: 10.09.2024</p>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>

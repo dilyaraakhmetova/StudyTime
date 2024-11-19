@@ -1,4 +1,4 @@
-/* Day theme colors*/
+/* Day theme colors */
 body {
     font-family: 'Tahoma', sans-serif;
     background-color: #b9d4e9; 
@@ -12,7 +12,6 @@ body {
     background-color: #2d446e; 
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     color: #fff;
 }
@@ -20,7 +19,7 @@ body {
     display: flex;                 
     gap: 10px;                     
 }
-.navbar button, .theme-toggle button {
+.navbar button{
     background-color: #6898ca; 
     color: white;
     padding: 10px 20px;
@@ -31,7 +30,7 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.navbar button:hover, .theme-toggle button:hover {
+.navbar button:hover {
     background-color: #5489c2; 
     transform: scale(1.05);
 }
@@ -67,11 +66,20 @@ h1 {
     transform: scale(1.05);
 }
 
-.course-title {
+.course-title-programming {
     font-size: 1.8rem;
-    color: #ff6347; 
+    color: #fd4c2c; 
 }
 
+.course-title-webdev {
+    font-size: 1.8rem;
+    color: #167544;
+}
+
+.course-title-design {
+    font-size: 1.8rem;
+    color: #352f73;
+}
 .course-description {
     font-size: 1rem;
     color: #666;
@@ -107,30 +115,6 @@ footer {
 .selected {
     color: gold; 
 }
-
-/* Night theme styles */
-body.night {
-    background-color: #2e2e2e; 
-    color: #f1f1f1; 
-}
-
-.navbar.night {
-    background-color: #1c1c1c;
-}
-
-.course-card.night {
-    background-color: #3a3a3a;
-}
-
-.course-title.night {
-    color: #ff9f00; 
-}
-
-footer.night {
-    background-color: #1c1c1c; 
-}
-
-/*dropdown*/
 .dropdown {
     position: relative;
     display: inline-block;
@@ -149,10 +133,63 @@ footer.night {
     z-index: 1;
 }
 
+
+/* Night theme styles */
+body.night {
+    background-color: #2e2e2e; 
+    color: #f1f1f1; 
+}
+
+.navbar.night {
+    background-color: #1c1c1c;
+}
+
+.course-card.night {
+    background-color: #3a3a3a;
+}
+
+.course-title-programming.night {
+    color: #ff4d2d;
+}
+
+.course-title-webdev.night {
+    color: #159653;
+}
+
+.course-title-design.night {
+    color: #332b90;
+}
+.course-description.night {
+    font-size: 1rem;
+    color: #d9d5d5;
+}
+body.night h1 {
+    color: #305cb0;
+    
+}
+
+footer.night {
+    background-color: #1c1c1c; 
+}
+
 .dropdown-content li {
     padding: 5px 0;
 }
 
 #filter-button {
+    margin-left: 10px;
     cursor: pointer;
 }
+
+body.night #home-button, body.night #filter-button {
+    background-color: #444;
+    color: white;
+}
+
+body.night #home-button:hover, body.night #filter-button:hover {
+    background-color: #666;
+}
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+

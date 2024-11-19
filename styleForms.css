@@ -1,10 +1,17 @@
+/* General transitions for smooth color change */
+body, .container, h2, input, .buttonReg, .buttonLog, #footer_log, #footer_reg, .buttonReset {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Day Theme Styles */
 #reg_body {
     font-family: Tahoma, sans-serif;
     background-color: #accdf0;
     margin: 0;
     padding: 0;
 }
-.buttonReg{
+
+.buttonReg {
     padding: 10px;
     background-color: #81a7cf;
     color: white;
@@ -13,7 +20,8 @@
     font-size: 16px;
     cursor: pointer;
 }
-.buttonReg:hover{
+
+.buttonReg:hover {
     background-color: #6d8ab0;
 }
 
@@ -22,8 +30,8 @@
     background-color: #8bc7b2;
     margin: 0;
     padding: 0;
-
 }
+
 .buttonLog {
     padding: 10px;
     background-color: #65aa92;
@@ -33,6 +41,7 @@
     font-size: 16px;
     cursor: pointer;
 }
+
 .buttonLog:hover {
     background-color: #65aa92b0;
 }
@@ -45,13 +54,16 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 h2 {
     text-align: center;
 }
+
 form {
     display: flex;
     flex-direction: column;
 }
+
 input {
     margin-bottom: 15px;
     padding: 10px;
@@ -59,39 +71,45 @@ input {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
 .link {
     text-align: center;
     margin-top: 20px;
 }
+
 .link a {
     text-decoration: none;
 }
-.link:hover a{
+
+.link:hover a {
     text-decoration: underline;
 }
-#footer_log{
-    background-color: #65aa92; 
-    color: white;            
-    text-align: center;      
-    padding: 20px;            
+
+#footer_log {
+    background-color: #65aa92;
+    color: white;
+    text-align: center;
+    padding: 20px;
     box-shadow: 0 -2px 50px rgba(0, 0, 0, 0.1);
 }
-#footer_reg{
-    background-color: #81a7cf; 
-    color: white;            
-    text-align: center;      
-    padding: 20px;            
+
+#footer_reg {
+    background-color: #81a7cf;
+    color: white;
+    text-align: center;
+    padding: 20px;
     box-shadow: 0 -2px 50px rgba(0, 0, 0, 0.1);
 }
+
 .buttonReset {
     padding: 10px;
-    width: 80px; 
-    background-color: #e57373; 
+    width: 80px;
+    background-color: #e57373;
     color: white;
-    border: none; 
+    border: none;
     border-radius: 4px;
-    font-size: 16px; 
-    cursor: pointer; 
+    font-size: 16px;
+    cursor: pointer;
     align-self: center;
     margin-top: 5px;
 }
@@ -100,3 +118,66 @@ input {
     background-color: #d32f2f;
 }
 
+
+/* Night Mode Styles */
+#reg_body.night {
+    background-color: #45617d;
+}
+
+#logIn_body.night {
+    background-color: #45617d;
+}
+
+body.night .container {
+    background-color: #34495e;
+    color: white;
+}
+
+body.night h2 {
+    color: #ecf0f1;
+}
+body.night .buttonLog{
+    background-color: #57917d;
+}
+body.night .buttonLog:hover{
+    background-color: #436f5f;
+}
+body.night .buttonReg{
+    background-color: #2980b9;
+}
+
+body.night .buttonReg:hover {
+    background-color: #246997;
+}
+
+body.night input {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1px solid #95a5a6;
+}
+
+body.night .buttonReset {
+    background-color: #e74c3c;
+}
+
+body.night .buttonReset:hover {
+    background-color: #c0392b;
+}
+
+body.night #footer_log,
+body.night #footer_reg {
+    background-color: #34495e;
+}
+
+/* Night theme text adjustments */
+body.night .link a {
+    color: #ecf0f1;
+}
+
+body.night .link a:hover {
+    color: #3498db;
+}
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}

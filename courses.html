@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="navbar">
-        <button onclick="goHome()">Home</button>
+        <button id="home-button" onclick="goHome()">Home</button>
         <div class="navbar-right">
             <div class="dropdown">
                 <button id="filter-button" onclick="toggleFilterOptions()">Filter</button>
@@ -41,7 +41,6 @@
                     </li>
                 </ul>
             </div>
-            <button id="theme-toggle" onclick="toggleTheme()">Night Mode</button>
         </div>
     </div>
 
@@ -50,7 +49,7 @@
     <div class="course-container">
         <div class="course-card">
             <div>
-                <h2 class="course-title">Programming Course</h2>
+                <h2 class="course-title-programming">Programming Course</h2>
                 <p class="course-description">Learn the basics of programming with Python and create your first projects.</p>
                 <p class="course-duration">Duration: 3 months</p>
                 <div class="rating" id="rating1">
@@ -67,7 +66,7 @@
 
         <div class="course-card">
             <div>
-                <h2 style="color: #167544" class="course-title">Web Development Course</h2>
+                <h2 class="course-title-webdev">Web Development Course</h2>
                 <p class="course-description">Master HTML, CSS, and JavaScript to build modern websites.</p>
                 <p class="course-duration">Duration: 4 months</p>
                 <div class="rating" id="rating2">
@@ -84,7 +83,7 @@
 
         <div class="course-card">
             <div>
-                <h2 style="color: #352f73" class="course-title">Design Course</h2>
+                <h2 class="course-title-design">Design Course</h2>
                 <p class="course-description">Learn the basics of graphic design and create creative projects.</p>
                 <p class="course-duration">Duration: 2 months</p>
                 <div class="rating" id="rating3">

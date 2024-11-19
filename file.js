@@ -2,6 +2,7 @@
 const popup = document.getElementById('contact-popup');
 const openPopupButton = document.getElementById('open-popup');
 const closeButton = document.querySelector('.close-btn');
+const form_popup = document.getElementById('contact-form'); 
 
 openPopupButton.addEventListener('click', () => {
     popup.style.display = 'flex';
@@ -17,16 +18,42 @@ window.addEventListener('click', (event) => {
     }
 });
 
-//Changing the background
-const colors = ["#FF6347", "#4682B4", "#32CD32", "#FFD700", "#DDA0DD", "#87CEEB", "#b9d4e9"];
-const colorButton = document.getElementById("colorButton");
-let colorIndex = 0;
+form_popup.addEventListener('submit', (event) => {
+    try {
+        event.preventDefault(); 
 
-colorButton.addEventListener("click", function() {
-    document.body.style.backgroundColor = colors[colorIndex];
-    colorIndex++;
-    if (colorIndex >= colors.length) {
-        colorIndex = 0; 
+        console.log('Form submission triggered');
+        const email = document.getElementById('email_popup').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+
+        if (!email || !phone || !message) {
+            alert("All fields are required.");
+            return false;
+        }
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            alert("Invalid email format.");
+            return false;
+        }
+
+        const phoneRegex = /^\+7\s?\d{3}\s?\d{7}$/;
+        if (!phoneRegex.test(phone)) {
+            alert("Invalid phone number format.");
+            return false;
+        }
+
+        if (message.length > 500) {
+            alert("Message cannot exceed 500 characters.");
+            return false;
+        }
+
+        alert("Form submitted successfully!");
+        form_popup.reset();
+        popup.style.display = 'none';
+    } catch (error) {
+        console.error('Error in form submission:', error);
     }
 });
 
@@ -95,41 +122,55 @@ document.addEventListener('DOMContentLoaded', function() {
     const steps = document.querySelectorAll('.step');
     const nextBtns = document.querySelectorAll('.next-btn');
     const backBtns = document.querySelectorAll('.back-btn');
-    const form = document.getElementById('form');
-    const confirmationDiv = document.getElementById('confirmation');
+    const form = document.getElementById('multi-form');
     const notificationSound = new Audio('sound.wav'); 
 
     let currentStep = 0;
 
     function showStep(stepIndex) {
-        for (let index = 0; index < steps.length; index++) {
+        steps.forEach((step, index) => {
             if (index === stepIndex) {
-                steps[index].style.display = 'block';
-                steps[index].classList.add('slide-in'); 
+                step.style.display = 'block';
+                step.classList.add('slide-in');
             } else {
-                steps[index].style.display = 'none';
-                steps[index].classList.remove('slide-in'); 
+                step.style.display = 'none';
+                step.classList.remove('slide-in');
+            }
+        });
+        setFocus();
+    }
+
+    function isEmailValid(email) {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return emailPattern.test(email);
+    }
+
+    function isStepValid(stepIndex) {
+        const currentStepElement = steps[stepIndex];
+        const inputs = currentStepElement.querySelectorAll('input, select, textarea');
+        for (let input of inputs) {
+            if (input.required && !input.value) {
+                return false;
             }
         }
-        updateConfirmation();
-        setFocus();
-    }    
-    function updateConfirmation() {
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const address = document.getElementById('address').value;
-        const city = document.getElementById('city').value;
-
-        confirmationDiv.innerHTML = `
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Address:</strong> ${address}</p>
-            <p><strong>City:</strong> ${city}</p>
-        `;
+        return true;
     }
 
     nextBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
+            if (!isStepValid(currentStep)) {
+                alert('Please fill all required fields before proceeding.');
+                return;
+            }
+
+            if (currentStep === 0) {
+                const email = document.getElementById('email').value;
+                if (!isEmailValid(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+            }
+
             if (currentStep < steps.length - 1) {
                 currentStep++;
                 showStep(currentStep);
@@ -148,6 +189,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault(); 
+        if (!isStepValid(currentStep)) {
+            alert('Please fill all required fields before submitting.');
+            return;
+        }
+
+        const email = document.getElementById('email').value;
+        if (!isEmailValid(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
         notificationSound.play();
         alert('Form submitted!'); 
     });
@@ -192,3 +244,57 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutItem.style.display = 'none'; 
     }
 });
+ 
+function toggleTheme() {
+    document.body.classList.toggle('night-mode');
+    document.querySelector('header').classList.toggle('night-mode');
+    document.querySelector('footer').classList.toggle('night-mode');
+    document.querySelectorAll('nav a').forEach(link => link.classList.toggle('night-mode'));
+    document.querySelector('main').classList.toggle('night-mode');
+    document.querySelectorAll('h2').forEach(h => h.classList.toggle('night-mode'));
+    document.querySelector('#reviews').classList.toggle('night-mode');
+    document.querySelectorAll('.review-card').forEach(card => card.classList.toggle('night-mode'));
+    document.querySelectorAll('.review-img').forEach(img => img.classList.toggle('night-mode'));
+    document.querySelector('.popup-content').classList.toggle('night-mode');
+    document.querySelector('#themeToggleButton').classList.toggle('night-mode');
+    document.querySelectorAll('a').forEach(a => a.classList.toggle('night-mode'));
+    document.querySelector('#dateTimeDisplay').classList.toggle('night-mode');
+     
+    if (document.body.classList.contains('night-mode')) {
+        localStorage.setItem('theme', 'night');
+        const img = document.getElementById('main-img');
+        img.src = 'menu-night.jpg';
+    } else {
+        localStorage.setItem('theme', 'day');
+        const img = document.getElementById('main-img');
+        img.src = 'Menu.jpg';
+    }
+}
+
+function applySavedTheme() {
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'night') {
+        document.body.classList.add('night-mode');
+        document.querySelector('header').classList.add('night-mode');
+        document.querySelector('footer').classList.add('night-mode');
+        document.querySelectorAll('nav a').forEach(link => link.classList.add('night-mode'));
+        document.querySelector('main').classList.add('night-mode');
+        document.querySelectorAll('h2').forEach(h => h.classList.add('night-mode'));
+        document.querySelector('#reviews').classList.add('night-mode');
+        document.querySelectorAll('.review-card').forEach(card => card.classList.add('night-mode'));
+        document.querySelectorAll('.review-img').forEach(img => img.classList.add('night-mode'));
+        document.querySelector('.popup-content').classList.add('night-mode');
+        document.querySelector('#themeToggleButton').classList.add('night-mode');
+        document.querySelectorAll('a').forEach(a => a.classList.add('night-mode'));
+        document.querySelector('#dateTimeDisplay').classList.add('night-mode');
+        const img = document.getElementById('main-img');
+        img.src = 'menu-night.jpg';
+    }else{
+        const img = document.getElementById('main-img');
+        img.src = 'Menu.jpg';
+    }
+}
+
+document.querySelector('#themeToggleButton').addEventListener('click', toggleTheme);
+window.addEventListener('load', applySavedTheme);

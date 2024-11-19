@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
-    checkLoginStatus(); 
-});
+document.addEventListener("DOMContentLoaded", () => {
+    applySavedTheme();
+}); 
 
 function validateLoginForm(event) {
     event.preventDefault();
@@ -36,7 +36,7 @@ function validateLoginForm(event) {
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("user", JSON.stringify(storedUser));
 
-    window.location.href = "StudyTime.html";
+    window.location.href = "profile.html";
 }
 
 function validateRegistrationForm(event) {
@@ -74,7 +74,16 @@ function validateRegistrationForm(event) {
         return;
     }
 
-    const userData = { firstName, lastName, email, password };
+    const registrationDate = new Date().toISOString().split('T')[0]; 
+
+    const userData = { 
+        firstName, 
+        lastName, 
+        email, 
+        password, 
+        registrationDate 
+    };
+
     localStorage.setItem("user_" + email, JSON.stringify(userData));
 
     alert("Registration successful! Please log in.");
@@ -86,3 +95,36 @@ function resetForm() {
         input.value = ''; 
     });
 } 
+
+function applySavedTheme() {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === 'night') {
+        const body = document.body;
+        const regBody = document.getElementById('reg_body');
+        const logInBody = document.getElementById('logIn_body');
+        const container = document.querySelector('.container');
+        const h2 = document.querySelector('h2');
+        const buttonReg = document.querySelector('.buttonReg');
+        const buttonLog = document.querySelector('.buttonLog');
+        const inputFields = document.querySelectorAll('input');
+        const buttonReset = document.querySelector('.buttonReset');
+        const footerLog = document.getElementById('footer_log');
+        const footerReg = document.getElementById('footer_reg');
+        const link = document.querySelector('.link');
+
+        body.classList.add('night');
+        regBody.classList.add('night');
+        logInBody.classList.add('night');
+        container.classList.add('night');
+        h2.classList.add('night');
+        buttonReg.classList.add('night');
+        buttonLog.classList.add('night');
+        inputFields.forEach(input => input.classList.add('night'));
+        buttonReset.classList.add('night');
+        footerLog.classList.add('night');
+        footerReg.classList.add('night');
+        link.classList.add('night');
+    }
+}
+

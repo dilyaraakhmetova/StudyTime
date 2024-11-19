@@ -4,7 +4,6 @@ function goHome() {
 
 document.addEventListener("DOMContentLoaded", () => {
     loadSavedRatings();
-    loadFilterSettings();
     loadSortSettings();
 });
 
@@ -33,50 +32,56 @@ function loadSavedRatings() {
 }
 
 //Theme
-document.addEventListener("DOMContentLoaded", () => {
+function applySavedTheme() {
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-        document.querySelectorAll('.course-card').forEach(card => card.classList.toggle('night', savedTheme === 'dark'));
-        document.querySelectorAll('.course-title').forEach(title => title.classList.toggle('night', savedTheme === 'dark'));
 
-        document.body.classList.toggle('night', savedTheme === 'dark');
-        document.querySelector('.navbar').classList.toggle('night', savedTheme === 'dark');
-        document.querySelector('footer').classList.toggle('night', savedTheme === 'dark');
-        
-        document.getElementById('theme-toggle').textContent = savedTheme === 'dark' ? "Day Mode" : "Night Mode";
-    }
-});
-
-function toggleTheme() {
     const body = document.body;
     const navbar = document.querySelector('.navbar');
-    const themeButton = document.getElementById('theme-toggle');
-    const courseCards = document.querySelectorAll('.course-card');
-    const courseTitles = document.querySelectorAll('.course-title');
     const footer = document.querySelector('footer');
+    const courseCards = document.querySelectorAll('.course-card');
+    const courseTitlesProgramming = document.querySelectorAll('.course-title-programming');
+    const courseTitlesWebdev = document.querySelectorAll('.course-title-webdev');
+    const courseTitlesDesign = document.querySelectorAll('.course-title-design');
+    const courseDes = document.querySelectorAll('.course-description');
+    const homeButton = document.getElementById('home-button');
+    const filterButton = document.getElementById('filter-button');
 
-    body.classList.toggle('night');
-    navbar.classList.toggle('night');
-    footer.classList.toggle('night');
-
-    courseCards.forEach(card => card.classList.toggle('night'));
-    courseTitles.forEach(title => title.classList.toggle('night'));
-
-    if (body.classList.contains('night')) {
-        themeButton.textContent = "Day Mode";
-        localStorage.setItem("theme", "dark"); 
+    if (savedTheme === 'night') {
+        body.classList.add('night');
+        navbar.classList.add('night');
+        footer.classList.add('night');
+        courseCards.forEach(card => card.classList.add('night'));
+        courseTitlesProgramming.forEach(title => title.classList.add('night'));
+        courseTitlesWebdev.forEach(title => title.classList.add('night'));
+        courseTitlesDesign.forEach(title => title.classList.add('night'));
+        courseDes.forEach(des => des.classList.add('night'));
+        homeButton.classList.add('night');
+        filterButton.classList.add('night');
     } else {
-        themeButton.textContent = "Night Mode";
-        localStorage.setItem("theme", "light");
+        body.classList.remove('night');
+        navbar.classList.remove('night');
+        footer.classList.remove('night');
+        courseCards.forEach(card => card.classList.remove('night'));
+        courseTitlesProgramming.forEach(title => title.classList.remove('night'));
+        courseTitlesWebdev.forEach(title => title.classList.remove('night'));
+        courseTitlesDesign.forEach(title => title.classList.remove('night'));
+        courseDes.forEach(des => des.classList.remove('night'));
+        homeButton.classList.remove('night');
+        filterButton.classList.remove('night');
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    applySavedTheme();
+});
+
+
+ 
 
 //Filtering
 function toggleFilterOptions() {
     const filterOptions = document.getElementById("filter-options");
     filterOptions.style.display = filterOptions.style.display === "none" ? "block" : "none";
-
-    localStorage.setItem("filterVisibility", filterOptions.style.display);
 }
 
 function sortCourses() {
@@ -126,12 +131,6 @@ function sortCourses() {
 function getDurationValue(durationText) {
     const match = durationText.match(/(\d+)/);
     return match ? parseInt(match[0]) : 0;
-}
-
-function loadFilterSettings() {
-    const filterOptions = document.getElementById("filter-options");
-    const savedVisibility = localStorage.getItem("filterVisibility");
-    filterOptions.style.display = savedVisibility === "block" ? "block" : "none";
 }
 
 function loadSortSettings() {
